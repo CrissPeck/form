@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { Alert } from "bootstrap";
-import Home from './Home';
 
 function Login() {
 
   const[emaillog, setEmaillog] = useState("");
   const[passwordlog, setPasswordlog] = useState("");
   const[flag, setFlang] = useState(false);
-  const[home, setHome] = useState(true);
-
 
   function handleSubmit (e) {
     e.preventDefault();
@@ -20,15 +17,14 @@ function Login() {
     } else if (passwordlog!== pass || emaillog!==mail){
       setFlang(true)
     }else {
-      setHome(!home);
-      setFlang(false)
+      /* aqui vas a ingresar el usuario a un estado global para que el componente
+       private route o public route redireccione al usuario */
     }
 
   }
 
   return (
     <div>
-  {home ? (
       <form onSubmit={handleSubmit}>
          <h1>Login</h1>
       <div className="form-group">
@@ -52,9 +48,6 @@ function Login() {
           <Alert>Porfavor revise sus credenciales</Alert>
            )} 
       </form>
-      ):(
-        <Home></Home>
-        )}
     </div>
   )
 }
